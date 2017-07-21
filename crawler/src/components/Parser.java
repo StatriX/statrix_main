@@ -2,5 +2,6 @@ package components;
 
 public class Parser {
     //todo
-    //todo
+    int a;
+    int b;
 }
