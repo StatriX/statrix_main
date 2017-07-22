@@ -3,6 +3,7 @@ package components;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Parser {
@@ -30,18 +31,23 @@ public class Parser {
     private int getMatchCounts(String[] words){
         int count = 0;
         for (String word : words){
-            Pattern pattern = Pattern.compile("(\\W|^)"+word+"(\\W|$)");
+            Pattern pattern = Pattern.compile("(\\W|^)"+word+"(\\W|$)", Pattern.UNICODE_CHARACTER_CLASS);
+            System.out.println(pattern);
+            Matcher matcher = pattern.matcher(pageContent);
+            while (matcher.find()){
+                count++;
+            }
         }
         System.out.println(count);
         return count;
     }
 
-//    public static void main(String[] args) {
-//        Map<String, String[]> testMap = new HashMap<String, String[]>();
-//        testMap.put("петруха", new String[]{"петр", "петру", "петром", "петра"});
+    public static void main(String[] args) {
+        Map<String, String[]> testMap = new HashMap<String, String[]>();
+        testMap.put("петруха", new String[]{"петр", "петру", "петром", "петра"});
 //        testMap.put("васька", new String[]{"васька", "ваське", "васькой", "васьки"});
-//        String testString = "васька для петра съел бабку, и сказал петр ваське: \"ну ты охламон васькас, нету у меня больше васьки\". И васька, обиженный петром, пошел спать.";
-//        Parser test = new Parser(testMap, testString);
-//        System.out.println(test.getParseResult());
-//    }
+        String testString = "васька для петра съел бабку, и сказал петр ваське: \"ну ты охламон васькас, нету у меня больше васьки\". И васька, обиженный петром, пошел спать.";
+        Parser test = new Parser(testMap, testString);
+        System.out.println(test.getParseResult());
+    }
 }
