@@ -1,4 +1,4 @@
 package dao;
 
-public class MySQLDao {
+public class MySQLDao implements DatabaseInerface {
 }
