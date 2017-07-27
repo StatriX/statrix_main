@@ -312,3 +312,32 @@ BEGIN
 END;
 //
 delimiter ;
+
+--
+-- Дефолтные значения
+--
+
+-- --------------------------------------------------------
+
+INSERT INTO `sx_chargings` (`id`, `title`, `sites_count`, `persons_count`, `users_count`) VALUES (1, 'Free', 0, 0, 0);
+INSERT INTO `sx_chargings` (`id`, `title`, `sites_count`, `persons_count`, `users_count`) VALUES (2, 'Basic', 5, 10, 5);
+INSERT INTO `sx_chargings` (`id`, `title`, `sites_count`, `persons_count`, `users_count`) VALUES (3, 'Premium', 10, 15, 65535);
+
+-- --------------------------------------------------------
+
+INSERT INTO `sx_persons` (`id`, `name`, `is_default`) VALUES (1, 'Путин В.В.', 1);
+INSERT INTO `sx_persons` (`id`, `name`, `is_default`) VALUES (2, 'Медведев Д.А.', 1);
+INSERT INTO `sx_persons` (`id`, `name`, `is_default`) VALUES (3, 'Навальный А.А', 1);
+
+-- --------------------------------------------------------
+
+INSERT INTO `sx_sites` (`id`, `name`, `url`, `is_default`) VALUES (1, 'Lenta.ru', 'lenta.ru', 1);
+INSERT INTO `sx_sites` (`id`, `name`, `url`, `is_default`) VALUES (2, 'РБК', 'rbk.ru', 1);
+INSERT INTO `sx_sites` (`id`, `name`, `url`, `is_default`) VALUES (3, 'Новости Mail.ru', 'news.mail.ru', 1);
+
+-- --------------------------------------------------------
+
+INSERT INTO `sx_keywords` (`id`, `name`, `person_id`) VALUES (1, 'путин', 1);
+INSERT INTO `sx_keywords` (`id`, `name`, `person_id`) VALUES (2, 'медведев', 2);
+INSERT INTO `sx_keywords` (`id`, `name`, `person_id`) VALUES (3, 'навальны', 3);
+INSERT INTO `sx_keywords` (`id`, `name`, `person_id`) VALUES (4, 'навально', 3);
