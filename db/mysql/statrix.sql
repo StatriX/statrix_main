@@ -3,6 +3,82 @@
 --
 
 -- --------------------------------------------------------
+--
+-- База данных: `statrix`
+--
+
+DROP TABLE IF EXISTS `sx_keywords`;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `sx_keywords`
+--
+
+CREATE TABLE `sx_keywords` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(255) NOT NULL,
+  `person_id` INT(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+DROP TABLE IF EXISTS `sx_person_page_rank`;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `sx_person_page_rank`
+--
+
+CREATE TABLE `sx_person_page_rank` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `person_Id` INT(11) NOT NULL,
+  `page_id` INT(11) NOT NULL,
+  `rank` INT(11) UNSIGNED NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+DROP TABLE IF EXISTS `sx_subscriptions_sites`;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `sx_subscriptions_sites`
+--
+
+CREATE TABLE `sx_subscriptions_sites` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `subscription_id` INT(11) NOT NULL,
+  `site_id` INT(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+DROP TABLE IF EXISTS `sx_subscriptions_persons`;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `sx_subscriptions_persons`
+--
+
+CREATE TABLE `sx_subscriptions_persons` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `subscription_id` INT(11) NOT NULL,
+  `person_id` INT(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+DROP TABLE IF EXISTS `sx_users`;
+
+-- --------------------------------------------------------
 
 --
 -- Структура таблицы `sx_users`
@@ -21,18 +97,7 @@ CREATE TABLE `sx_users` (
 
 -- --------------------------------------------------------
 
---
--- Структура таблицы `sx_chargings`
---
-
-CREATE TABLE `sx_chargings` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `title` VARCHAR(128) NOT NULL,
-  `sites_count` SMALLINT UNSIGNED NOT NULL,
-  `persons_count` SMALLINT UNSIGNED NOT NULL,
-  `users_count` SMALLINT UNSIGNED NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+DROP TABLE IF EXISTS `sx_subscriptions`;
 
 -- --------------------------------------------------------
 
@@ -50,16 +115,26 @@ CREATE TABLE `sx_subscriptions` (
 
 -- --------------------------------------------------------
 
+DROP TABLE IF EXISTS `sx_chargings`;
+
+-- --------------------------------------------------------
+
 --
--- Структура таблицы `sx_keywords`
+-- Структура таблицы `sx_chargings`
 --
 
-CREATE TABLE `sx_keywords` (
+CREATE TABLE `sx_chargings` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(255) NOT NULL,
-  `person_id` INT(11) NOT NULL,
+  `title` VARCHAR(128) NOT NULL,
+  `sites_count` SMALLINT UNSIGNED NOT NULL,
+  `persons_count` SMALLINT UNSIGNED NOT NULL,
+  `users_count` SMALLINT UNSIGNED NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+DROP TABLE IF EXISTS `sx_pages`;
 
 -- --------------------------------------------------------
 
@@ -78,17 +153,7 @@ CREATE TABLE `sx_pages` (
 
 -- --------------------------------------------------------
 
---
--- Структура таблицы `sx_person_page_rank`
---
-
-CREATE TABLE `sx_person_page_rank` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `person_Id` INT(11) NOT NULL,
-  `page_id` INT(11) NOT NULL,
-  `rank` INT(11) UNSIGNED NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+DROP TABLE IF EXISTS `sx_persons`;
 
 -- --------------------------------------------------------
 
@@ -105,6 +170,10 @@ CREATE TABLE `sx_persons` (
 
 -- --------------------------------------------------------
 
+DROP TABLE IF EXISTS `sx_sites`;
+
+-- --------------------------------------------------------
+
 --
 -- Структура таблицы `sx_sites`
 --
@@ -114,32 +183,6 @@ CREATE TABLE `sx_sites` (
   `name` VARCHAR(255) NOT NULL,
   `url` VARCHAR(255) NOT NULL,
   `is_default` TINYINT NOT NULL DEFAULT 0,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Структура таблицы `sx_subscriptions_sites`
---
-
-CREATE TABLE `sx_subscriptions_sites` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `subscription_id` INT(11) NOT NULL,
-  `site_id` INT(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Структура таблицы `sx_subscriptions_persons`
---
-
-CREATE TABLE `sx_subscriptions_persons` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `subscription_id` INT(11) NOT NULL,
-  `person_id` INT(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -255,7 +298,7 @@ ALTER TABLE `sx_keywords`
 -- Триггеры
 --
 
--- If end_date is NULL then default value will be start_date + 1 month
+-- If end_date is NULL then default value will be current time + 1 month
 delimiter //
 drop trigger if exists trig_end_date_next_month //
 CREATE TRIGGER trig_end_date_next_month
@@ -264,7 +307,7 @@ ON sx_subscriptions
 FOR EACH ROW
 BEGIN
   IF NEW.end_date IS NULL THEN
-    SET NEW.end_date = (NEW.start_date + INTERVAL 1 MONTH);
+    SET NEW.end_date = (SELECT NOW() + INTERVAL 1 MONTH);
   END IF;
 END;
 //
