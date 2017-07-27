@@ -255,7 +255,7 @@ ALTER TABLE `sx_keywords`
 -- Триггеры
 --
 
--- If end_date is NULL then default value will be current date + 1 month
+-- If end_date is NULL then default value will be start_date + 1 month
 delimiter //
 drop trigger if exists trig_end_date_next_month //
 CREATE TRIGGER trig_end_date_next_month
