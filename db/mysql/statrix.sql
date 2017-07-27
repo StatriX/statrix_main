@@ -13,7 +13,7 @@ CREATE TABLE `sx_users` (
   `name` VARCHAR(128) NOT NULL,
   `email` VARCHAR(128) NOT NULL,
   `password` VARCHAR(128),
-  `admin_id` INT(11),
+  `admin_id` INT(11) DEFAULT NULL,
   `subscription_id` INT (11),
   `is_root` TINYINT DEFAULT 0,
   PRIMARY KEY (`id`)
@@ -28,9 +28,9 @@ CREATE TABLE `sx_users` (
 CREATE TABLE `sx_chargings` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(128) NOT NULL,
-  `sites_count` SMALLINT UNSIGNED,
-  `persons_count` SMALLINT UNSIGNED,
-  `users_count` SMALLINT UNSIGNED,
+  `sites_count` SMALLINT UNSIGNED NOT NULL,
+  `persons_count` SMALLINT UNSIGNED NOT NULL,
+  `users_count` SMALLINT UNSIGNED NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -44,7 +44,7 @@ CREATE TABLE `sx_subscriptions` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `charging_id` INT(11) NOT NULL,
   `start_date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `end_date` DATETIME NOT NULL,
+  `end_date` DATETIME DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -250,3 +250,22 @@ ALTER TABLE `sx_subscriptions_persons`
 --
 ALTER TABLE `sx_keywords`
   ADD CONSTRAINT `sxc_keywords_person` FOREIGN KEY (`person_id`) REFERENCES `sx_persons` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Триггеры
+--
+
+-- If end_date is NULL then default value will be current date + 1 month
+delimiter //
+drop trigger if exists trig_end_date_next_month //
+CREATE TRIGGER trig_end_date_next_month
+BEFORE INSERT
+ON sx_subscriptions
+FOR EACH ROW
+BEGIN
+  IF NEW.end_date IS NULL THEN
+    SET NEW.end_date = (NEW.start_date + INTERVAL 1 MONTH);
+  END IF;
+END;
+//
+delimiter ;
