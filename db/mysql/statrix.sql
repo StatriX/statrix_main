@@ -89,7 +89,7 @@ CREATE TABLE `sx_users` (
   `name` VARCHAR(128) NOT NULL,
   `email` VARCHAR(128) NOT NULL,
   `password` VARCHAR(128),
-  `admin_id` INT(11) DEFAULT NULL,
+  `invited_by` INT(11) DEFAULT NULL,
   `subscription_id` INT (11),
   `is_root` TINYINT DEFAULT 0,
   PRIMARY KEY (`id`)
@@ -193,7 +193,7 @@ CREATE TABLE `sx_sites` (
 ALTER TABLE `sx_users`
   ADD UNIQUE KEY `unique_email` (`email`),
   ADD KEY `key_subscription_id` (`subscription_id`),
-  ADD KEY `key_admin_id` (`admin_id`);
+  ADD KEY `key_invited_by` (`invited_by`);
 
 --
 -- Индексы таблицы `sx_keywords`
@@ -252,7 +252,7 @@ ALTER TABLE `sx_subscriptions_persons`
 -- Ограничения внешнего ключа таблицы `sx_users`
 --
 ALTER TABLE `sx_users`
-  ADD CONSTRAINT `sxc_users_admin` FOREIGN KEY (`admin_id`) REFERENCES `sx_users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `sxc_users_admin` FOREIGN KEY (`invited_by`) REFERENCES `sx_users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `sxc_users_subscription` FOREIGN KEY (`subscription_id`) REFERENCES `sx_subscriptions` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
@@ -341,3 +341,7 @@ INSERT INTO `sx_keywords` (`id`, `name`, `person_id`) VALUES (1, 'путин', 1
 INSERT INTO `sx_keywords` (`id`, `name`, `person_id`) VALUES (2, 'медведев', 2);
 INSERT INTO `sx_keywords` (`id`, `name`, `person_id`) VALUES (3, 'навальны', 3);
 INSERT INTO `sx_keywords` (`id`, `name`, `person_id`) VALUES (4, 'навально', 3);
+
+-- --------------------------------------------------------
+
+INSERT INTO `sx_users` (`id`, `name`, `email`, `password`, `subscription_id`, `is_root`) VALUES (1, 'admin', 'statrix@dm-dev.ru','834999bb49545d2b4964141a71a24f36', null, 1);
