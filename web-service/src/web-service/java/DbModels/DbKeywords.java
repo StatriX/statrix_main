@@ -1,3 +1,5 @@
+package DbModels;
+
 public class DbKeywords {
     private int id;
     String name;
