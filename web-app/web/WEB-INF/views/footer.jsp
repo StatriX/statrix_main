@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
     </div>
 </content>
-<footer class="text-center">
+<footer>
     <div class="footer-above">
         <div class="container">
             <div class="row">
@@ -17,23 +17,23 @@
                 <div class="footer-col col-md-4">
                     <h3>Приложения</h3>
                     <ul class="footer-links">
-                        <li><a href="#">Statrix Android</a></li>
-                        <li><a href="#">Statrix Windows</a></li>
-                        <li><a href="/login">Statrix OnLine</a></li>
+                        <li><a href="#"><img src="images/android.svg"> Statrix Android</a></li>
+                        <li><a href="#"><img src="images/windows.svg"> Statrix Windows</a></li>
+                        <li><a href="/login"><img src="images/web.svg"> Statrix OnLine</a></li>
                     </ul>
                 </div>
                 <div class="footer-col col-md-4">
                     <h3>Мы в соцсетях</h3>
                     <ul class="footer-links">
-                        <li><a href="#">Facebook</a></li>
-                        <li><a href="#">ВКонтакте</a></li>
-                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#"><img src="images/facebook.svg"> Facebook</a></li>
+                        <li><a href="#"><img src="images/vk.svg"> ВКонтакте</a></li>
+                        <li><a href="#"><img src="images/twitter.svg"> Twitter</a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
-    <div class="footer-below">
+    <div class="footer-below text-center">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
