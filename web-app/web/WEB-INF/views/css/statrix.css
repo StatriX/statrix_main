@@ -15,8 +15,48 @@ h5,
 h6 {
     font-family: Helvetica, Arial, sans-serif;
     text-transform: uppercase;
+    font-weight: 300;
+    color: #4e7fc9;
+}
+
+h1 {
+    font-size: 2em;
+    margin-top: 0.67em;
+    margin-bottom: 0.67em;
     font-weight: 700;
-    color: #8e8e8e;
+}
+
+h2 {
+    font-size: 1.5em;
+    margin-top: 0.83em;
+    margin-bottom: 0.83em;
+    font-weight: 700;
+}
+
+h3 {
+    font-size: 1.25em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    font-weight: 600;
+}
+
+h4 {
+    font-size: 1em;
+    margin-top: 1.33em;
+    margin-bottom: 1.33em;
+    font-weight: 600;
+}
+
+h5 {
+    font-size: .86em;
+    margin-top: 1.67em;
+    margin-bottom: 1.67em;
+}
+
+h6 {
+    font-size: .73em;
+    margin-top: 2.33em;
+    margin-bottom: 2.33em;
 }
 
 a.navbar-brand {
@@ -89,6 +129,8 @@ a.navbar-brand {
 
 content .container {
     padding-top: 40px;
+    padding-bottom: 20px;
+    text-align: justify;
 }
 
 footer {
@@ -99,6 +141,10 @@ footer .footer-above {
     padding-top: 30px;
     background-color: #434343;
     padding-bottom: 30px;
+}
+
+footer .footer-above h1, h2, h3, h4, h5, h6{
+    color: #6e6e6e;
 }
 
 footer .footer-below {

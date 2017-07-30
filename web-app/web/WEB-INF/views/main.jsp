@@ -2,16 +2,13 @@
 <jsp:include page="header.jsp"/>
 <div class="container">
 
-    <!-- Main component for a primary marketing message or call to action -->
-    <div class="jumbotron">
-        <h1>Statrix On-Line</h1>
-        <p>This is a test page</p>
-        <p>
-            <a class="btn btn-lg btn-primary" href="#" role="button">Узнать подробнее »</a>
-        </p>
-    </div>
+    <h1>О продукте</h1>
+    <p>
+        <strong>Statrix</strong> - программный комплекс, предназначенный для проведения анализа web-сайтов с целью
+        изучения популярности определенных трендов и явлений. Быстрый поисковый робот, а также мощный алгоритм анализа,
+        помогут Вам узнать насколько популярны на новостных сайтах, блогах и соцсетях, какой-либо политик, марка
+        автомобиля или религия, а также сравнить изменение их индекса популярности во времени.
+    </p>
 
 </div>
-<%--<h1>First page</h1>--%>
-<%--<p>${main}</p>--%>
 <jsp:include page="footer.jsp"/>
