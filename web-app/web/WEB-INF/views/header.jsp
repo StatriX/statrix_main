@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Statrix</title>
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="css/statrix.css">
@@ -22,7 +23,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#">Продукт</a></li>
                 <li><a href="#">Поддержка</a></li>
-                <li><a href="#">О компании</a></li>
+                <li><a href="#">О нас</a></li>
                 <li><a href="#">Отзывы</a></li>
                 <li><a href="/login">Вход</a></li>
             </ul>

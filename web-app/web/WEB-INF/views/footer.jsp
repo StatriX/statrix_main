@@ -10,7 +10,7 @@
                     <ul class="footer-links">
                         <li><a href="#">Продукт</a></li>
                         <li><a href="#">Поддержка</a></li>
-                        <li><a href="#">О компании</a></li>
+                        <li><a href="#">О нас</a></li>
                         <li><a href="#">Контакты</a></li>
                     </ul>
                 </div>
