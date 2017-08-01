@@ -1,6 +1,8 @@
+package DbModels;
+
 public class DbKeywords {
     private int id;
-    String name;
+    private String name;
 
     public String getName() {
         return name;
