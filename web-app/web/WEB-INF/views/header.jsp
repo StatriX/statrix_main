@@ -27,8 +27,7 @@
                 <li><a href="#">Отзывы</a></li>
                 <li><a href="/login">Вход</a></li>
             </ul>
-        </div><!--/.nav-collapse -->
+        </div>
     </div>
 </nav>
 <content>
-    <div class="container">
