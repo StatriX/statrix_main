@@ -1,11 +1,11 @@
-package DbModels;
+package com.statrix.rest.models;
 
-public class DbPersonPageRank {
+public class PersonPageRank {
     private int personId;
     private int pageId;
     private int rank;
 
-    public DbPersonPageRank(int personId, int pageId) {
+    public PersonPageRank(int personId, int pageId) {
         this.personId = personId;
         this.pageId = pageId;
     }
