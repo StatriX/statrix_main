@@ -1,4 +1,6 @@
-import DbModels.DbKeywords;
+package com.statrix.rest;
+
+import com.statrix.rest.models.Keywords;
 
 import java.util.List;
 
@@ -11,8 +13,8 @@ public class KeywordViewer {
     }
 
     public void View(int personId) {
-        List<DbKeywords> keywords = iKeywordsRepository.getKeywordsByPersonId(personId);
-        for (DbKeywords k : keywords) {
+        List<Keywords> keywords = iKeywordsRepository.getKeywordsByPersonId(personId);
+        for (Keywords k : keywords) {
             System.out.println(k.getName());
         }
     }
