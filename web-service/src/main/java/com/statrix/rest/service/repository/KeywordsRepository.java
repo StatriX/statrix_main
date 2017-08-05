@@ -1,4 +1,4 @@
-package com.statrix.rest;
+package com.statrix.rest.service.repository;
 import com.statrix.rest.models.Keywords;
 
 import java.util.List;

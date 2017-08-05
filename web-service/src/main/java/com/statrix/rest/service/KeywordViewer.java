@@ -1,6 +1,7 @@
-package com.statrix.rest;
+package com.statrix.rest.service;
 
 import com.statrix.rest.models.Keywords;
+import com.statrix.rest.service.repository.KeywordsRepository;
 
 import java.util.List;
 
