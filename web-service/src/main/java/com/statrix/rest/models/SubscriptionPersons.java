@@ -1,8 +1,8 @@
 package com.statrix.rest.models;
 
-public class SubscriptionSites {
+public class SubscriptionPersons {
     private int subscriptionId;
-    private int siteId;
+    private int personId;
 
     public int getSubscriptionId() {
         return subscriptionId;
@@ -12,11 +12,11 @@ public class SubscriptionSites {
         this.subscriptionId = subscriptionId;
     }
 
-    public int getSiteId() {
-        return siteId;
+    public int getPersonId() {
+        return personId;
     }
 
-    public void setSiteId(int siteId) {
-        this.siteId = siteId;
+    public void setPersonId(int personId) {
+        this.personId = personId;
     }
 }

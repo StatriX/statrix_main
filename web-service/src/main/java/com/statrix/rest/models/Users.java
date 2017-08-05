@@ -31,6 +31,14 @@ public class Users {
         this.subscription = subscription;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }
@@ -43,15 +51,23 @@ public class Users {
         return email;
     }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
     public void setPassword(String password) {
         this.password = password;
     }
 
-    public int getInviterId() {
+    public Integer getInviterId() {
         return inviterId;
     }
 
-    public void setInviterId(int inviterId) {
+    public void setInviterId(Integer inviterId) {
         this.inviterId = inviterId;
     }
 

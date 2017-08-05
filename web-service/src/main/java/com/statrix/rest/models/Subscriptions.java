@@ -25,6 +25,22 @@ public class Subscriptions {
         this.endDate = endDate;// будет рассчитываться исходя из тиа подписки?
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getChargingType() {
+        return chargingType;
+    }
+
+    public void setChargingType(int chargingType) {
+        this.chargingType = chargingType;
+    }
+
     public Date getStartDate() {
         return startDate;
     }

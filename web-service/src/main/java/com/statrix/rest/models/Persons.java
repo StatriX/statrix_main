@@ -4,11 +4,12 @@ public class Persons {
     private int id;
     private String name;
 
-//    public Persons(int id) {
-//        this.id = id;
-//    }
-
     public Persons(String name) {
+        this.name = name;
+    }
+
+    public Persons(int id, String name) {
+        this.id = id;
         this.name = name;
     }
 
@@ -22,5 +23,9 @@ public class Persons {
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

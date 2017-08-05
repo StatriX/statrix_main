@@ -6,14 +6,23 @@ public class Sites {
     private String name;
     private String url;
 
-
     public Sites(String name, String url) {
+        this.name = name;
+        this.url = url;
+    }
+
+    public Sites(int id, String name, String url) {
+        this.id = id;
         this.name = name;
         this.url = url;
     }
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
