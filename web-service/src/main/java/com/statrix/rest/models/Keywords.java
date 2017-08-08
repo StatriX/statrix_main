@@ -1,8 +1,5 @@
 package com.statrix.rest.models;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class Keywords {
 
     private int id;
