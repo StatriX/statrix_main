@@ -1,7 +1,7 @@
 package com.statrix.rest.models;
 
 public class Users {
-    private int id;
+    private long id;
     private String name;
     private String email;
     private String password;
@@ -31,11 +31,20 @@ public class Users {
         this.subscription = subscription;
     }
 
-    public int getId() {
+    // для отладки, где вручную задаем все параметры
+    public Users(long id, String name, String email, String password, Integer inviterId) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.inviterId = inviterId;
+        this.subscription = subscription;
+    }
+
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

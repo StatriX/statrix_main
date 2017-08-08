@@ -11,50 +11,30 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.1.8.RELEASE</version>
+        <version>1.4.3.RELEASE</version>
     </parent>
 
     <dependencies>
-
-        <!--библиотека для веб-сервисов, может пригодиться, применение пока не ясно-->
-        <dependency>
-            <groupId>com.sparkjava</groupId>
-            <artifactId>spark-core</artifactId>
-            <version>2.6.0</version>
-        </dependency>
-
-        <!--Spring-boot-->
+        <!-- Add typical dependencies for a web application -->
+        <!-- Adds Tomcat and Spring MVC, along others, jackson-databind included transitively -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+
+
     </dependencies>
 
     <build>
         <plugins>
-
-            <!--компилятор maven для версии java 1.8-->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
+            <plugin><!-- Include if you want to make an executable jar[FAT JAR which includes all  dependencies along with sprinboot loader] that you can run on commandline using java -jar NAME -->
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-
-            <!--конфигурирует сборку war архива и говорит, что мы не требуемся в использовании web.xml файла-->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <configuration>
-                    <failOnMissingWebXml>false</failOnMissingWebXml>
-                </configuration>
-            </plugin>
-
         </plugins>
     </build>
+
 
 
 </project>
