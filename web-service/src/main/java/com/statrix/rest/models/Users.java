@@ -8,6 +8,8 @@ public class Users {
     private Integer inviterId = null;
     private Subscriptions subscription;
 
+    public Users(){
+    }
     // новый пользователь, без приглашения, с подпиской FREE
     public Users(String name, String email, String password) {
         this.name = name;
@@ -86,5 +88,10 @@ public class Users {
 
     public void setSubscription(Subscriptions subscription) {
         this.subscription = subscription;
+    }
+
+    @Override
+    public String toString() {
+        return "User [id=" + this.id + ", name=" + this.name + ", email=" + this.email + ", password=" + this.password + ", inviter_id=" + this.inviterId +"]";
     }
 }
