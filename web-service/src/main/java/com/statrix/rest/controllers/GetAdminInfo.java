@@ -3,6 +3,7 @@ package com.statrix.rest.controllers;
 import com.statrix.rest.models.Users;
 import com.statrix.rest.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,7 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1/info/")
+@EnableAutoConfiguration
+@RequestMapping("statrix/api/v1/info/")
 public class GetAdminInfo {
 
     @Autowired
@@ -23,6 +25,7 @@ public class GetAdminInfo {
         if( admin == null){
             return new ResponseEntity("not found", HttpStatus.NOT_FOUND);
         }
+//        return new ResponseEntity(HttpStatus.OK);
         return new ResponseEntity<Users>(admin, HttpStatus.OK);
     }
 }
