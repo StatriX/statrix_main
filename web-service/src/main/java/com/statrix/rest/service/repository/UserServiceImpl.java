@@ -1,6 +1,7 @@
 package com.statrix.rest.service.repository;
 
 
+import com.statrix.rest.models.Subscriptions;
 import com.statrix.rest.models.Users;
 import com.statrix.rest.service.UserService;
 import org.springframework.stereotype.Service;
@@ -22,7 +23,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Users findById(long id) {
+    public Users findById(Long id) {
         for(Users user : users){
             if(user.getId() == id){
                 return user;
@@ -54,7 +55,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void deleteUserById(long id) {
+    public void deleteUserById(Long id) {
         for (Iterator<Users> iterator = users.iterator(); iterator.hasNext(); ) {
             Users user = iterator.next();
             if (user.getId() == id) {
@@ -80,10 +81,10 @@ public class UserServiceImpl implements UserService {
 
     private static List<Users> populateDummyUsers(){
         List<Users> users = new ArrayList<Users>();
-//        users.add(new Users(counter.incrementAndGet(),"Vasya","123@m.ru","qwerty", 123));
-        users.add(new Users(1,"Vasya","123@m.ru","qwerty", 123));
-        users.add(new Users(2,"Petya","123@m.ru","qwerty", 123));
-        users.add(new Users(3,"Masha","123@m.ru","qwerty", 123));
+
+        users.add(new Users(counter.incrementAndGet(),"AdminVasya","123@m.ru","qwerty", new Subscriptions(Subscriptions.BASIC)));
+        users.add(new Users(counter.incrementAndGet(),"UserPetya","123@m.ru","qwerty", new Long(123)));
+        users.add(new Users(counter.incrementAndGet(),"Masha","123@m.ru","qwerty", new Long(123)));
         return users;
     }
 }

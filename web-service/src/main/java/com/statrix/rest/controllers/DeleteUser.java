@@ -13,20 +13,21 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @EnableAutoConfiguration
-@RequestMapping("statrix/api/v1/info/")
-public class GetAdminInfo {
+@RequestMapping("statrix/api/v1/")
+public class DeleteUser {
 
     @Autowired
     UserService userService;
 
-    @RequestMapping(value = "admin/{id}", method = RequestMethod.GET)
-    public ResponseEntity<?> getAdminInfo(@PathVariable("id") Long id){
-        Users admin = userService.findById(id);
-        if( admin == null){
-            return new ResponseEntity("not found", HttpStatus.NOT_FOUND);
-        }
-//        return new ResponseEntity(HttpStatus.OK);
-        return new ResponseEntity<Users>(admin, HttpStatus.OK);
-    }
+    @RequestMapping(value = "sx_user/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<?> deleteUser(@PathVariable("id") Long id){
 
+        Users user = userService.findById(id);
+        if( user == null){
+            return new ResponseEntity("Unable to delete. User with id " + id + " not found.",
+                    HttpStatus.NOT_FOUND);
+        }
+        userService.deleteUserById(id);
+        return new ResponseEntity<Users>(HttpStatus.NO_CONTENT);
+    }
 }

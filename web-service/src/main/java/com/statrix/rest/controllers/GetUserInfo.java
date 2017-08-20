@@ -14,19 +14,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @EnableAutoConfiguration
 @RequestMapping("statrix/api/v1/info/")
-public class GetAdminInfo {
+public class GetUserInfo {
 
     @Autowired
     UserService userService;
 
-    @RequestMapping(value = "admin/{id}", method = RequestMethod.GET)
-    public ResponseEntity<?> getAdminInfo(@PathVariable("id") Long id){
-        Users admin = userService.findById(id);
-        if( admin == null){
+    @RequestMapping(value = "sx_user/{id}", method = RequestMethod.GET)
+    public ResponseEntity<?> getUserInfo(@PathVariable("id") Long id){
+        Users user = userService.findById(id);
+        if( user == null){
             return new ResponseEntity("not found", HttpStatus.NOT_FOUND);
         }
-//        return new ResponseEntity(HttpStatus.OK);
-        return new ResponseEntity<Users>(admin, HttpStatus.OK);
+        return new ResponseEntity<Users>(user, HttpStatus.OK);
     }
-
 }
