@@ -5,9 +5,9 @@ import java.util.Date;
 public class Subscriptions {
 
     // TODO: переделать в enum
-    protected static final int FREE = 1;
-    protected static final int BASIC = 2;
-    protected static final int PREMIUM = 3;
+    public static final int FREE = 1;
+    public static final int BASIC = 2;
+    public static final int PREMIUM = 3;
 
     private int id;
     private int chargingType;
